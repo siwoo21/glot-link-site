@@ -57,7 +57,7 @@ export default function App() {
               <p style={{ margin: '4px 0' }}>대표자: 이태호 | 주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</p>
               <p style={{ margin: '4px 0' }}>
                 이메일: wqe5000@naver.com | 
-                고객센터: <a href="http://pf.kakao.com/_xjxbZPX/chat" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 상담하기</a>
+                고객센터: <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>문의하기</a>
               </p>
             </div>
             <div>
