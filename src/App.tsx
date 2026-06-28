@@ -10,7 +10,7 @@ export default function App() {
         <h1 style={{ fontSize: '3rem', margin: '0 0 10px 0', letterSpacing: '-1px' }}>GLOT-Link</h1>
         <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
         <p style={{ fontSize: '1rem', color: '#94a3b8', margin: '0 0 30px 0', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto' }}>
-          게임은 물론, 해외 커뮤니티·스트리밍·업무 채팅까지. Alt+T 한 번으로 실시간 번역하세요.
+          게임은 물론, 해외 커뮤니티·스트리밍·업무 채팅까지. Alt+1 한 번으로 실시간 번역하세요.
         </p>
         <div>
           <a href="#" style={{ background: '#6366f1', color: '#fff', padding: '15px 35px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', display: 'inline-block', transition: 'background 0.2s' }}>
@@ -18,7 +18,7 @@ export default function App() {
           </a>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '36px' }}>
-          {['Alt+T 실시간 번역', '게임·채팅 오버레이', '가볍게 실행'].map((tag) => (
+          {['Alt+1 단축키 번역', '게임·채팅 오버레이', '가볍게 실행'].map((tag) => (
             <span key={tag} style={{ padding: '6px 14px', borderRadius: '999px', fontSize: '0.85rem', color: '#cbd5e1', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
               {tag}
             </span>
@@ -31,11 +31,11 @@ export default function App() {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', margin: '0 0 12px 0', fontSize: '1.75rem', color: '#0f172a' }}>GLOT-Link가 하는 일</h2>
           <p style={{ textAlign: 'center', margin: '0 0 36px 0', color: '#64748b', fontSize: '0.95rem' }}>
-            설치 후 단축키 한 번이면, 화면 위 텍스트를 바로 번역합니다.
+            설치 후 Alt+1 한 번이면, 화면 위 텍스트를 바로 번역합니다. (Pro 버전은 단축키 변경 가능)
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
             {[
-              { title: '키 한 번 번역', desc: 'Alt+T로 채팅·자막·메시지를 즉시 번역. 게임 중에도 흐름을 끊지 않습니다.' },
+              { title: '키 한 번 번역', desc: 'Alt+1로 채팅·자막·메시지를 즉시 번역. 게임 중에도 흐름을 끊지 않습니다.' },
               { title: '화면 위 오버레이', desc: '별도 창 없이 게임·브라우저·디스코드 위에 결과가 바로 표시됩니다.' },
               { title: '어디서든 활용', desc: '게임, 스트리밍, 해외 커뮤니티, 업무 채팅까지 폭넓게 사용할 수 있습니다.' },
             ].map((item) => (
@@ -88,9 +88,9 @@ export default function App() {
               ₩6,900 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월 (정기구독)</span>
             </p>
             <ul style={{ paddingLeft: '20px', margin: 0, flex: 1, fontSize: '0.95rem', color: '#1e1b4b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
-              <li style={{ marginBottom: '8px' }}><strong>무제한 번역</strong> · Alt+T 등 단축키 커스텀</li>
+              <li style={{ marginBottom: '8px' }}><strong>무제한 번역</strong> · 단축키 변경 가능</li>
               <li style={{ marginBottom: '8px' }}><strong>실전 게임 은어 사전</strong> 자동 보정</li>
-              <li style={{ marginBottom: 0 }}>언제든 해지 가능</li>
+              <li style={{ marginBottom: 0 }}>신규 은어 · 기능 우선 업데이트</li>
             </ul>
           </div>
 
@@ -120,9 +120,14 @@ export default function App() {
               </p>
               <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
                 <span style={{ whiteSpace: 'nowrap' }}>이메일: wqe5000@naver.com</span>
+              </p>
+              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  고객센터: <a href="tel:0507-1330-4441" style={{ color: '#e2e8f0', textDecoration: 'none', fontWeight: 'bold' }}>0507-1330-4441</a>
+                </span>
                 <span style={{ color: '#475569' }}>|</span>
                 <span style={{ whiteSpace: 'nowrap' }}>
-                  고객센터: <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 문의하기</a>
+                  <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 문의하기</a>
                 </span>
               </p>
             </div>
