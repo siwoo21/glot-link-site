@@ -51,13 +51,20 @@ export default function App() {
       <footer style={{ background: '#0f172a', color: '#94a3b8', padding: '40px 20px', fontSize: '12px', borderTop: '1px solid #1e293b' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '25px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', marginBottom: '25px' }}>
             <div>
               <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>GLOT-Link (상호명: 하루우드)</p>
-              <p style={{ margin: '4px 0' }}>대표자: 이태호 | 주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</p>
-              <p style={{ margin: '4px 0' }}>
-                이메일: wqe5000@naver.com | 
-                고객센터: <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>문의하기</a>
+              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px', wordBreak: 'keep-all' }}>
+                <span style={{ whiteSpace: 'nowrap' }}>대표자: 이태호</span>
+                <span style={{ color: '#475569' }}>|</span>
+                <span>주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</span>
+              </p>
+              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
+                <span style={{ whiteSpace: 'nowrap' }}>이메일: wqe5000@naver.com</span>
+                <span style={{ color: '#475569' }}>|</span>
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  고객센터: <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 문의하기</a>
+                </span>
               </p>
             </div>
             <div>
