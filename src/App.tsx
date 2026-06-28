@@ -120,4 +120,153 @@ export default function App() {
             <div>
               <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>GLOT-Link (상호명: 하루우드)</p>
               <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px', wordBreak: 'keep-all' }}>
-                <span style={{ white
+                <span style={{ whiteSpace: 'nowrap' }}>대표자: 이태호</span>
+                <span style={{ color: '#475569' }}>|</span>
+                <span>주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</span>
+              </p>
+              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
+                <span style={{ whiteSpace: 'nowrap' }}>이메일: wqe5000@naver.com</span>
+              </p>
+              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  고객센터: <a href="tel:0507-1330-4441" style={{ color: '#e2e8f0', textDecoration: 'none', fontWeight: 'bold' }}>0507-1330-4441</a>
+                </span>
+                <span style={{ color: '#475569' }}>|</span>
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 문의하기</a>
+                </span>
+              </p>
+            </div>
+            <div>
+              <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>사업자 등록 정보</p>
+              <p style={{ margin: '4px 0' }}>사업자등록번호: 545-18-02753</p>
+              <p style={{ margin: '4px 0' }}>통신판매업신고번호: 제 2026-성남중원-0328 호</p>
+            </div>
+          </div>
+
+          <hr style={{ borderColor: '#1e293b', margin: '20px 0' }} />
+
+          {/* 법적 필수 약관 링크 */}
+          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '20px' }}>
+            <button
+              type="button"
+              onClick={() => setActiveModal('terms')}
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#cbd5e1', textDecoration: 'none', fontSize: '12px' }}
+            >
+              이용약관
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveModal('privacy')}
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#fff', textDecoration: 'none', fontWeight: 'bold', fontSize: '12px' }}
+            >
+              개인정보처리방침
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveModal('refund')}
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#cbd5e1', textDecoration: 'none', fontSize: '12px' }}
+            >
+              정기결제 및 환불약관
+            </button>
+          </div>
+
+          <p style={{ margin: '0', color: '#64748b' }}>© 2026 GLOT-Link. All rights reserved. 본 사이트는 크롬 브라우저에 최적화되어 있습니다.</p>
+        </div>
+      </footer>
+
+      {/* 약관 모달 */}
+      {activeModal && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px',
+            background: 'rgba(15, 23, 42, 0.72)',
+            backdropFilter: 'blur(4px)',
+          }}
+          onClick={closeModal}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: '640px',
+              maxHeight: '85vh',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: '16px',
+              background: 'rgba(255, 255, 255, 0.98)',
+              boxShadow: '0 24px 48px rgba(15, 23, 42, 0.35)',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px 16px', borderBottom: '1px solid #e2e8f0' }}>
+              <h2 id="modal-title" style={{ margin: 0, fontSize: '1.15rem', color: '#0f172a' }}>
+                {activeModal === 'terms' && '이용약관'}
+                {activeModal === 'privacy' && '개인정보처리방침'}
+                {activeModal === 'refund' && '정기결제 및 환불약관'}
+              </h2>
+              <button
+                type="button"
+                onClick={closeModal}
+                aria-label="닫기"
+                style={{
+                  background: '#f1f5f9',
+                  border: 'none',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  color: '#475569',
+                  fontSize: '1.1rem',
+                  lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
+            </div>
+            <div style={{ padding: '20px 24px 28px', overflowY: 'auto', color: '#334155', fontSize: '0.9rem', lineHeight: '1.75', wordBreak: 'keep-all' }}>
+              {activeModal === 'terms' && (
+                <>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>제1조 (목적)</strong><br />본 약관은 하루우드(이하 &quot;회사&quot;)가 제공하는 GLOT-Link 서비스(이하 &quot;서비스&quot;)의 이용 조건 및 절차, 회사와 이용자의 권리·의무를 규정함을 목적으로 합니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>제2조 (회사 정보)</strong><br />상호: 하루우드<br />대표자: 이태호<br />서비스명: GLOT-Link<br />고객센터: 0507-1330-4441 / wqe5000@naver.com</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>제3조 (서비스 내용)</strong><br />GLOT-Link는 Windows 환경에서 단축키(기본 Alt+1)를 통해 화면 텍스트를 실시간 번역하는 소프트웨어입니다. Free 버전과 Pro 버전을 제공하며, Pro 버전은 월 ₩6,900의 정기구독 요금이 적용됩니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>제4조 (이용자의 의무)</strong><br />이용자는 서비스를 불법적인 목적으로 사용하거나, 타인의 권리를 침해하는 행위, 서비스의 정상적인 운영을 방해하는 행위를 해서는 안 됩니다.</p>
+                  <p style={{ margin: 0 }}><strong>제5조 (면책)</strong><br />회사는 천재지변, 시스템 장애, 번역 API 제공사의 사정 등 불가항력으로 인한 서비스 중단에 대해 책임을 지지 않습니다. 번역 결과는 참고용이며, 이용자는 최종 확인 책임을 집니다.</p>
+                </>
+              )}
+              {activeModal === 'privacy' && (
+                <>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>1. 개인정보 처리자</strong><br />하루우드 (대표: 이태호) / GLOT-Link</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>2. 수집 항목 및 목적</strong><br />회사는 서비스 제공, 결제·구독 관리, 고객 문의 응대를 위해 필요한 최소한의 정보(이메일, 결제 관련 정보, 문의 내용 등)를 수집·이용할 수 있습니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>3. 보유 기간</strong><br />관련 법령에 따른 보존 기간 또는 이용 목적 달성 시까지 보유하며, 목적 달성 후 지체 없이 파기합니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>4. 제3자 제공</strong><br />법령에 근거한 경우를 제외하고, 이용자의 동의 없이 개인정보를 제3자에게 제공하지 않습니다. 결제 처리 시 결제대행사(PG)에 필요한 정보가 전달될 수 있습니다.</p>
+                  <p style={{ margin: 0 }}><strong>5. 문의</strong><br />개인정보 관련 문의: wqe5000@naver.com / 0507-1330-4441</p>
+                </>
+              )}
+              {activeModal === 'refund' && (
+                <>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>1. 정기결제 안내</strong><br />GLOT-Link Pro 버전은 월 ₩6,900의 정기구독 상품입니다. 결제일로부터 30일 단위로 자동 결제되며, 이용자는 언제든 구독 해지를 요청할 수 있습니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>2. 해지 방법</strong><br />앱 내 구독 관리 메뉴 또는 고객센터(0507-1330-4441, wqe5000@naver.com, 카카오톡 채널)를 통해 해지할 수 있습니다. 해지 시 다음 결제일부터 요금이 청구되지 않습니다.</p>
+                  <p style={{ margin: '0 0 16px 0' }}><strong>3. 환불 정책</strong><br />결제 후 7일 이내이며 서비스를 실질적으로 이용하지 않은 경우 전액 환불을 요청할 수 있습니다. 이미 Pro 기능(무제한 번역 등)을 사용한 경우, 이용 일수에 따라 일할 계산 후 환불될 수 있습니다.</p>
+                  <p style={{ margin: 0 }}><strong>4. 판매자 정보</strong><br />하루우드 / 대표 이태호 / 사업자등록번호 545-18-02753 / 통신판매업신고 제 2026-성남중원-0328 호</p>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+}
