@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 title GLOT-Link Auto Deployer
 echo ===================================================
 echo   [GLOT-Link] 홈페이지 업데이트 및 배포를 시작합니다.
