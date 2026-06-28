@@ -8,7 +8,10 @@ export default function App() {
       {/* 1. 상단 헤더 및 서비스 소개 */}
       <header style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
         <h1 style={{ fontSize: '3rem', margin: '0 0 10px 0', letterSpacing: '-1px' }}>GLOT-Link</h1>
-        <p style={{ fontSize: '1.2rem', color: '#cbd5e1', margin: '0 0 30px 0' }}>초경량 게이밍 챗 헬퍼 - 당신의 게임을 글로벌하게.</p>
+        <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
+        <p style={{ fontSize: '1rem', color: '#94a3b8', margin: '0 0 30px 0', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto' }}>
+          게임은 물론, 해외 커뮤니티·스트리밍·업무 채팅까지. Alt+T 한 번으로 실시간 번역하세요.
+        </p>
         <div>
           <a href="#" style={{ background: '#6366f1', color: '#fff', padding: '15px 35px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', display: 'inline-block', transition: 'background 0.2s' }}>
             Windows용 다운로드 (v1.0.0)
@@ -18,32 +21,52 @@ export default function App() {
 
       {/* 2. 요금제 안내 (카카오페이 심사 필수 노출 영역) */}
       <section style={{ padding: '60px 20px', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2rem' }}>Membership Plan</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '12px', fontSize: '2rem', color: '#0f172a' }}>Membership Plan</h2>
+        <p style={{ textAlign: 'center', margin: '0 0 40px 0', fontSize: '0.95rem', color: '#64748b' }}>
+          게임·채팅·커뮤니티 어디서든, 필요에 맞는 버전을 선택하세요.
+        </p>
         <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
           
           {/* Free 플랜 */}
-          <div style={{ flex: 1, minWidth: '280px', border: '1px solid #e2e8f0', padding: '30px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-            <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0' }}>Free</h3>
-            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#475569' }}>₩0 <span style={{ fontSize: '1rem', fontWeight: 'normal' }}>/ 월</span></p>
-            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#475569', lineHeight: '2' }}>
-              <li>일일 번역 20회 제한 (초과 시 노란색 경고 표시)</li>
-              <li>단축키 'Alt + 1' 고정 (변경 불가능)</li>
-              <li>글로벌 캐시 적용 (중복 단어 API 소모 차단)</li>
+          <div style={{ flex: 1, minWidth: '280px', border: '1px solid #94a3b8', padding: '30px', borderRadius: '12px', backgroundColor: '#fff', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)' }}>
+            <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0', color: '#0f172a' }}>
+              Free
+              <span style={{ fontSize: '0.75rem', fontWeight: 'normal', color: '#64748b', marginLeft: '6px' }}>버전</span>
+            </h3>
+            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#1e293b' }}>
+              ₩0 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월</span>
+            </p>
+            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#1e293b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
+              <li style={{ marginBottom: '8px' }}>일일 번역 20회 제한 · 초과 시 경고 표시</li>
+              <li>단축키 Alt + 1 고정 (변경 불가)</li>
             </ul>
           </div>
 
           {/* Pro 플랜 */}
-          <div style={{ flex: 1, minWidth: '280px', border: '2px solid #6366f1', padding: '30px', borderRadius: '12px', backgroundColor: '#f8fafc', boxShadow: '0 10px 15px -3px rgba(99, 102, 241, 0.1)' }}>
-            <div style={{ display: 'inline-block', background: '#6366f1', color: '#fff', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px' }}>RECOMMEND</div>
-            <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0' }}>Pro</h3>
-            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#6366f1' }}>₩6,900 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월 (정기구독)</span></p>
-            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#334155', lineHeight: '2' }}>
-              <li><strong>무제한 번역</strong> (Alt+T 등 단축키 커스텀 가능)</li>
+          <div style={{ flex: 1, minWidth: '280px', border: '2px solid #4338ca', padding: '30px', borderRadius: '12px', backgroundColor: '#eef2ff', boxShadow: '0 10px 24px rgba(67, 56, 202, 0.15)' }}>
+            <div style={{ display: 'inline-block', background: '#4338ca', color: '#fff', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px' }}>RECOMMEND</div>
+            <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0', color: '#1e1b4b' }}>
+              Pro
+              <span style={{ fontSize: '0.75rem', fontWeight: 'normal', color: '#6366f1', marginLeft: '6px' }}>버전</span>
+            </h3>
+            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#4338ca' }}>
+              ₩6,900 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월 (정기구독)</span>
+            </p>
+            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#1e1b4b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
+              <li style={{ marginBottom: '8px' }}><strong>무제한 번역</strong> · Alt+T 등 단축키 커스텀</li>
               <li><strong>실전 게임 은어 사전</strong> 자동 보정</li>
-              <li>30일마다 자동 정기 결제 (언제든 해지 가능)</li>
             </ul>
           </div>
 
+        </div>
+
+        {/* 공통 기능 설명 */}
+        <div style={{ marginTop: '36px', padding: '24px 28px', borderRadius: '12px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0' }}>
+          <p style={{ margin: '0 0 8px 0', fontSize: '0.85rem', fontWeight: 'bold', color: '#4338ca', letterSpacing: '0.02em' }}>모든 버전 공통</p>
+          <p style={{ margin: '0 0 6px 0', fontSize: '1rem', fontWeight: 'bold', color: '#0f172a' }}>스마트 캐시로 더 빠른 번역</p>
+          <p style={{ margin: 0, fontSize: '0.95rem', color: '#475569', lineHeight: '1.7', wordBreak: 'keep-all' }}>
+            한 번 번역한 문장은 저장됩니다. 같은 내용이 다시 나와도 즉시 표시되어, Free·Pro 모두 더 빠르고 안정적으로 이용할 수 있습니다.
+          </p>
         </div>
       </section>
 
