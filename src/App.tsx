@@ -17,7 +17,36 @@ export default function App() {
             Windows용 다운로드 (v1.0.0)
           </a>
         </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '36px' }}>
+          {['Alt+T 실시간 번역', '게임·채팅 오버레이', '가볍게 실행'].map((tag) => (
+            <span key={tag} style={{ padding: '6px 14px', borderRadius: '999px', fontSize: '0.85rem', color: '#cbd5e1', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </header>
+
+      {/* 1-2. 주요 기능 */}
+      <section style={{ padding: '56px 20px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <h2 style={{ textAlign: 'center', margin: '0 0 12px 0', fontSize: '1.75rem', color: '#0f172a' }}>GLOT-Link가 하는 일</h2>
+          <p style={{ textAlign: 'center', margin: '0 0 36px 0', color: '#64748b', fontSize: '0.95rem' }}>
+            설치 후 단축키 한 번이면, 화면 위 텍스트를 바로 번역합니다.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
+            {[
+              { title: '키 한 번 번역', desc: 'Alt+T로 채팅·자막·메시지를 즉시 번역. 게임 중에도 흐름을 끊지 않습니다.' },
+              { title: '화면 위 오버레이', desc: '별도 창 없이 게임·브라우저·디스코드 위에 결과가 바로 표시됩니다.' },
+              { title: '어디서든 활용', desc: '게임, 스트리밍, 해외 커뮤니티, 업무 채팅까지 폭넓게 사용할 수 있습니다.' },
+            ].map((item) => (
+              <div key={item.title} style={{ padding: '24px', borderRadius: '12px', background: '#fff', border: '1px solid #e2e8f0', boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)' }}>
+                <p style={{ margin: '0 0 8px 0', fontWeight: 'bold', color: '#0f172a', fontSize: '1.05rem' }}>{item.title}</p>
+                <p style={{ margin: 0, fontSize: '0.9rem', color: '#475569', lineHeight: '1.65', wordBreak: 'keep-all' }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 2. 요금제 안내 (카카오페이 심사 필수 노출 영역) */}
       <section style={{ padding: '60px 20px', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
@@ -25,36 +54,43 @@ export default function App() {
         <p style={{ textAlign: 'center', margin: '0 0 40px 0', fontSize: '0.95rem', color: '#64748b' }}>
           게임·채팅·커뮤니티 어디서든, 필요에 맞는 버전을 선택하세요.
         </p>
-        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
           
           {/* Free 플랜 */}
-          <div style={{ flex: 1, minWidth: '280px', border: '1px solid #94a3b8', padding: '30px', borderRadius: '12px', backgroundColor: '#fff', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '300px', border: '2px solid #94a3b8', padding: '28px 30px', borderRadius: '12px', backgroundColor: '#fff', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)' }}>
+            <div style={{ minHeight: '28px', marginBottom: '12px', display: 'flex', alignItems: 'center' }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', color: '#64748b', border: '1px solid #cbd5e1', background: '#f8fafc' }}>BASIC</span>
+            </div>
             <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0', color: '#0f172a' }}>
               Free
               <span style={{ fontSize: '0.75rem', fontWeight: 'normal', color: '#64748b', marginLeft: '6px' }}>버전</span>
             </h3>
-            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#1e293b' }}>
+            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#1e293b', minHeight: '2.4rem' }}>
               ₩0 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월</span>
             </p>
-            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#1e293b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
+            <ul style={{ paddingLeft: '20px', margin: 0, flex: 1, fontSize: '0.95rem', color: '#1e293b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
               <li style={{ marginBottom: '8px' }}>일일 번역 20회 제한 · 초과 시 경고 표시</li>
-              <li>단축키 Alt + 1 고정 (변경 불가)</li>
+              <li style={{ marginBottom: '8px' }}>단축키 Alt + 1 고정 (변경 불가)</li>
+              <li style={{ marginBottom: 0 }}>스마트 캐시 포함</li>
             </ul>
           </div>
 
           {/* Pro 플랜 */}
-          <div style={{ flex: 1, minWidth: '280px', border: '2px solid #4338ca', padding: '30px', borderRadius: '12px', backgroundColor: '#eef2ff', boxShadow: '0 10px 24px rgba(67, 56, 202, 0.15)' }}>
-            <div style={{ display: 'inline-block', background: '#4338ca', color: '#fff', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px' }}>RECOMMEND</div>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '300px', border: '2px solid #4338ca', padding: '28px 30px', borderRadius: '12px', backgroundColor: '#eef2ff', boxShadow: '0 10px 24px rgba(67, 56, 202, 0.15)' }}>
+            <div style={{ minHeight: '28px', marginBottom: '12px', display: 'flex', alignItems: 'center' }}>
+              <span style={{ display: 'inline-block', background: '#4338ca', color: '#fff', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold' }}>RECOMMEND</span>
+            </div>
             <h3 style={{ fontSize: '1.5rem', margin: '0 0 10px 0', color: '#1e1b4b' }}>
               Pro
               <span style={{ fontSize: '0.75rem', fontWeight: 'normal', color: '#6366f1', marginLeft: '6px' }}>버전</span>
             </h3>
-            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#4338ca' }}>
+            <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '0 0 20px 0', color: '#4338ca', minHeight: '2.4rem' }}>
               ₩6,900 <span style={{ fontSize: '1rem', fontWeight: 'normal', color: '#475569' }}>/ 월 (정기구독)</span>
             </p>
-            <ul style={{ paddingLeft: '20px', fontSize: '0.95rem', color: '#1e1b4b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
+            <ul style={{ paddingLeft: '20px', margin: 0, flex: 1, fontSize: '0.95rem', color: '#1e1b4b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
               <li style={{ marginBottom: '8px' }}><strong>무제한 번역</strong> · Alt+T 등 단축키 커스텀</li>
-              <li><strong>실전 게임 은어 사전</strong> 자동 보정</li>
+              <li style={{ marginBottom: '8px' }}><strong>실전 게임 은어 사전</strong> 자동 보정</li>
+              <li style={{ marginBottom: 0 }}>언제든 해지 가능</li>
             </ul>
           </div>
 
