@@ -1,12 +1,44 @@
 // src/App.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function App() {
   // 어떤 약관 팝업을 띄울지 제어하는 상태 (null, 'terms', 'privacy', 'refund')
   const [activeModal, setActiveModal] = useState<'terms' | 'privacy' | 'refund' | null>(null);
 
-  // 팝업 닫기 함수
   const closeModal = () => setActiveModal(null);
+
+  const openModal = (type: 'terms' | 'privacy' | 'refund') => (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveModal(type);
+  };
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [activeModal]);
 
   return (
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -150,21 +182,21 @@ export default function App() {
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '20px' }}>
             <button
               type="button"
-              onClick={() => setActiveModal('terms')}
+              onClick={openModal('terms')}
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#cbd5e1', textDecoration: 'none', fontSize: '12px' }}
             >
               이용약관
             </button>
             <button
               type="button"
-              onClick={() => setActiveModal('privacy')}
+              onClick={openModal('privacy')}
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#fff', textDecoration: 'none', fontWeight: 'bold', fontSize: '12px' }}
             >
               개인정보처리방침
             </button>
             <button
               type="button"
-              onClick={() => setActiveModal('refund')}
+              onClick={openModal('refund')}
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#cbd5e1', textDecoration: 'none', fontSize: '12px' }}
             >
               정기결제 및 환불약관
@@ -175,8 +207,8 @@ export default function App() {
         </div>
       </footer>
 
-      {/* 약관 모달 */}
-      {activeModal && (
+      {/* 약관 모달 — body에 포털 렌더링 (스크롤·레이어 문제 방지) */}
+      {activeModal && createPortal(
         <div
           role="dialog"
           aria-modal="true"
@@ -184,7 +216,7 @@ export default function App() {
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 1000,
+            zIndex: 9999,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -264,7 +296,8 @@ export default function App() {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
 
     </div>
