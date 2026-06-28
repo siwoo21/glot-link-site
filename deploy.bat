@@ -1,10 +1,22 @@
 @echo off
 chcp 65001 >nul
 title GLOT-Link Auto Deployer
+
+:: 배치 파일이 있는 폴더(프로젝트 루트)로 이동 — 더블클릭 시 위치 이슈 방지
+cd /d "%~dp0"
+
 echo ===================================================
 echo   [GLOT-Link] 홈페이지 업데이트 및 배포를 시작합니다.
 echo ===================================================
 echo.
+echo 작업 폴더: %CD%
+echo.
+
+if not exist ".git" (
+    echo ❌ 이 폴더는 Git 저장소가 아닙니다.
+    echo    deploy.bat 파일을 glot-link-site 프로젝트 폴더에 두고 실행해 주세요.
+    goto ERROR
+)
 
 :: 1. 변경된 파일 담기
 echo 1. 변경된 파일들을 임시 보관함에 담는 중...
