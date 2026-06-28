@@ -1,5 +1,4 @@
-// src/App.tsx
-import React from 'react';
+// src/App.tsx (맨 위 import React 줄을 제거했습니다)
 
 export default function App() {
   return (
@@ -9,13 +8,13 @@ export default function App() {
         <h1>GLOT-Link</h1>
         <p>초경량 게이밍 챗 헬퍼 - 당신의 게임을 글로벌하게.</p>
         <div style={{ marginTop: '30px' }}>
-          <a href="여기에_설치파일_링크_넣기" style={{ background: '#000', color: '#fff', padding: '15px 30px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+          <a href="#" style={{ background: '#000', color: '#fff', padding: '15px 30px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
             Windows용 다운로드 (v1.0.0)
           </a>
         </div>
       </header>
 
-      {/* 2. 요금제 안내 (카카오페이 심사 필수) */}
+      {/* 2. 요금제 안내 */}
       <section style={{ padding: '60px 20px', maxWidth: '800px', margin: '0 auto' }}>
         <h2>Membership Plan</h2>
         <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
