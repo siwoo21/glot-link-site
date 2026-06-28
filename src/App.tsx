@@ -4,18 +4,18 @@
     
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '25px' }}>
       <div>
-        <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>GLOT-Link (상호명: [실제 상호명])</p>
-        <p style={{ margin: '4px 0' }}>대표자: [대표자 성명] | 주소: [사업장 주소지]</p>
+        <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>GLOT-Link (상호명: 하루우드)</p>
+        <p style={{ margin: '4px 0' }}>대표자: 이태호 | 주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</p>
         {/* 이메일과 카카오톡 채팅방 링크 연결 */}
         <p style={{ margin: '4px 0' }}>
-          이메일: [고객문의용 이메일] | 
+          이메일: wqe5000@naver.com | 
           고객센터: <a href="http://pf.kakao.com/_xjxbZPX/chat" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 상담하기</a>
         </p>
       </div>
       <div>
         <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>사업자 등록 정보</p>
-        <p style={{ margin: '4px 0' }}>사업자등록번호: [사업자번호 입력]</p>
-        <p style={{ margin: '4px 0' }}>통신판매업신고번호: [통신판매업번호 입력] (신고 전이면 '신고 예정')</p>
+        <p style={{ margin: '4px 0' }}>사업자등록번호: 545-18-02753</p>
+        <p style={{ margin: '4px 0' }}>통신판매업신고번호: 제 2026-성남중원-0328 호</p>
       </div>
     </div>
 
