@@ -1,7 +1,13 @@
 // src/App.tsx
-// TS6133 에러 방지를 위해 사용하지 않는 React import는 제외했습니다.
+import { useState } from 'react';
 
 export default function App() {
+  // 어떤 약관 팝업을 띄울지 제어하는 상태 (null, 'terms', 'privacy', 'refund')
+  const [activeModal, setActiveModal] = useState<'terms' | 'privacy' | 'refund' | null>(null);
+
+  // 팝업 닫기 함수
+  const closeModal = () => setActiveModal(null);
+
   return (
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
@@ -114,43 +120,4 @@ export default function App() {
             <div>
               <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>GLOT-Link (상호명: 하루우드)</p>
               <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px', wordBreak: 'keep-all' }}>
-                <span style={{ whiteSpace: 'nowrap' }}>대표자: 이태호</span>
-                <span style={{ color: '#475569' }}>|</span>
-                <span>주소: 경기도 성남시 중원구 광명로262번길 19, 102호(중앙동, 신우맨션)</span>
-              </p>
-              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
-                <span style={{ whiteSpace: 'nowrap' }}>이메일: wqe5000@naver.com</span>
-              </p>
-              <p style={{ margin: '6px 0', display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', columnGap: '10px', rowGap: '4px' }}>
-                <span style={{ whiteSpace: 'nowrap' }}>
-                  고객센터: <a href="tel:0507-1330-4441" style={{ color: '#e2e8f0', textDecoration: 'none', fontWeight: 'bold' }}>0507-1330-4441</a>
-                </span>
-                <span style={{ color: '#475569' }}>|</span>
-                <span style={{ whiteSpace: 'nowrap' }}>
-                  <a href="http://pf.kakao.com/_xjxbZPX" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline', fontWeight: 'bold' }}>카카오톡 1:1 문의하기</a>
-                </span>
-              </p>
-            </div>
-            <div>
-              <p style={{ margin: '4px 0', color: '#f8fafc', fontSize: '14px', fontWeight: 'bold' }}>사업자 등록 정보</p>
-              <p style={{ margin: '4px 0' }}>사업자등록번호: 545-18-02753</p>
-              <p style={{ margin: '4px 0' }}>통신판매업신고번호: 제 2026-성남중원-0328 호</p>
-            </div>
-          </div>
-
-          <hr style={{ borderColor: '#1e293b', margin: '20px 0' }} />
-
-          {/* 법적 필수 약관 링크 */}
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '20px' }}>
-            <a href="#" style={{ color: '#cbd5e1', textDecoration: 'none' }}>이용약관</a>
-            <a href="#" style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }}>개인정보처리방침</a>
-            <a href="#" style={{ color: '#cbd5e1', textDecoration: 'none' }}>정기결제 및 환불약관</a>
-          </div>
-
-          <p style={{ margin: '0', color: '#64748b' }}>© 2026 GLOT-Link. All rights reserved. 본 사이트는 크롬 브라우저에 최적화되어 있습니다.</p>
-        </div>
-      </footer>
-
-    </div>
-  );
-}
+                <span style={{ white
