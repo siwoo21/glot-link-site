@@ -114,6 +114,69 @@ code {
   background: var(--code-bg);
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-decoration: none;
+  color: #fff;
+}
+
+.site-brand__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.35));
+  user-select: none;
+}
+
+.site-brand__name {
+  font-family: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.site-nav a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: #fff;
+}
+
+.site-nav__sep {
+  color: rgba(255, 255, 255, 0.28);
+  user-select: none;
+}
+
 .hero-header {
   position: relative;
   overflow: hidden;
@@ -123,40 +186,6 @@ code {
   position: relative;
   z-index: 1;
   padding-top: 28px;
-}
-
-.hero-nav {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin: 0;
-  font-size: 0.88rem;
-  letter-spacing: 0.06em;
-  opacity: 0.42;
-  filter: blur(0.45px);
-}
-
-.hero-nav a {
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-  transition: opacity 0.2s ease, filter 0.2s ease, color 0.2s ease;
-}
-
-.hero-nav a:hover {
-  color: rgba(255, 255, 255, 0.95);
-  opacity: 1;
-  filter: blur(0);
-}
-
-.hero-nav__sep {
-  color: rgba(255, 255, 255, 0.28);
-  user-select: none;
 }
 
 .membership-section {
@@ -182,10 +211,9 @@ code {
 }
 
 .hero-mascot {
-  width: clamp(128px, 30vw, 180px);
+  width: clamp(104px, 26vw, 148px);
   height: auto;
-  transform: rotate(-3deg);
-  filter: drop-shadow(0 10px 24px rgba(99, 102, 241, 0.35));
+  filter: drop-shadow(0 10px 24px rgba(99, 102, 241, 0.4));
   user-select: none;
 }
 
