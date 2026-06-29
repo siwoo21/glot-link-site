@@ -58,7 +58,7 @@ export default function App() {
             <defs>
               <linearGradient id="heroWaveGradient" gradientUnits="userSpaceOnUse" x1="0" y1="600" x2="1000" y2="0">
                 <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
-                <stop offset="32%" stopColor="rgba(56, 189, 248, 0.22)" />
+                <stop offset="38%" stopColor="rgba(56, 189, 248, 0.1)" />
                 <stop offset="50%" stopColor="rgba(167, 139, 250, 0.55)" />
                 <stop offset="68%" stopColor="rgba(56, 189, 248, 0.25)" />
                 <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
