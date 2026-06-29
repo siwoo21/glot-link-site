@@ -66,6 +66,10 @@ body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2 {
   font-family: var(--heading);
@@ -118,6 +122,72 @@ code {
 .hero-header__content {
   position: relative;
   z-index: 1;
+}
+
+.hero-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 56px 0;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+}
+
+.hero-nav a {
+  color: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-nav a:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-nav__sep {
+  color: rgba(255, 255, 255, 0.32);
+  user-select: none;
+}
+
+.membership-section {
+  padding: 64px 20px 72px;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  flex: 1;
+}
+
+.membership-section__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px 0 !important;
+  padding: 0;
+  color: #fff;
+}
+
+.hero-mascot {
+  width: clamp(92px, 24vw, 132px);
+  height: auto;
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 10px 24px rgba(99, 102, 241, 0.35));
+  user-select: none;
+}
+
+.hero-brand__name {
+  font-family: var(--heading);
+  font-size: clamp(1.35rem, 3.8vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
 }
 
 .hero-logo {

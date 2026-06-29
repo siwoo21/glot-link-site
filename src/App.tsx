@@ -44,7 +44,7 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header className="hero-header" style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+      <header className="hero-header" style={{ padding: '28px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
         <div className="hero-wave-wrap" aria-hidden="true">
           <svg className="hero-wave" viewBox="0 0 1000 600" preserveAspectRatio="none">
             <defs>
@@ -65,11 +65,15 @@ export default function App() {
             />
           </svg>
         </div>
+        <nav className="hero-nav" aria-label="페이지 안내">
+          <a href="#features">기능</a>
+          <span className="hero-nav__sep" aria-hidden="true">|</span>
+          <a href="#membership">Membership</a>
+        </nav>
         <div className="hero-header__content">
-        <h1 className="hero-logo">
-          <span className="hero-logo__word">GLOT</span>
-          <span className="hero-logo__dash" aria-hidden="true">-</span>
-          <span className="hero-logo__word">Link</span>
+        <h1 className="hero-brand" aria-label="GLOT-Link">
+          <img src="/glot-mascot.svg" alt="" className="hero-mascot" draggable={false} />
+          <span className="hero-brand__name">GLOT-Link</span>
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
         <p style={{ fontSize: '1rem', color: '#94a3b8', margin: '0 0 30px 0', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -91,7 +95,7 @@ export default function App() {
       </header>
 
       {/* 1-2. 주요 기능 */}
-      <section style={{ padding: '56px 20px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+      <section id="features" style={{ padding: '56px 20px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', margin: '0 0 12px 0', fontSize: '1.75rem', color: '#0f172a' }}>GLOT-Link가 하는 일</h2>
           <p style={{ textAlign: 'center', margin: '0 0 36px 0', color: '#64748b', fontSize: '0.95rem' }}>
@@ -113,7 +117,8 @@ export default function App() {
       </section>
 
       {/* 2. 요금제 안내 (카카오페이 심사 필수 노출 영역) */}
-      <section style={{ padding: '60px 20px', maxWidth: '900px', margin: '0 auto', flex: 1 }}>
+      <section id="membership" className="membership-section">
+        <div className="membership-section__inner">
         <h2 style={{ textAlign: 'center', marginBottom: '12px', fontSize: '2rem', color: '#0f172a' }}>Membership Plan</h2>
         <p style={{ textAlign: 'center', margin: '0 0 40px 0', fontSize: '0.95rem', color: '#64748b' }}>
           게임·채팅·커뮤니티 어디서든, 필요에 맞는 버전을 선택하세요.
@@ -168,9 +173,8 @@ export default function App() {
             한 번 번역한 문장은 저장됩니다. 같은 내용이 다시 나와도 즉시 표시되어, Free·Pro 모두 더 빠르고 안정적으로 이용할 수 있습니다.
           </p>
         </div>
+        </div>
       </section>
-
-      {/* 3. 푸터 (법적 필수 정보 고정 영역) */}
       <footer style={{ background: '#0f172a', color: '#94a3b8', padding: '40px 20px', fontSize: '12px', borderTop: '1px solid #1e293b' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           

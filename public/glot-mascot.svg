@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 148" fill="none" aria-hidden="true">
+  <!-- ,È,È ø¼ Œ È¤T¸ (GLOT-Link) -->
+  <path
+    d="M64 14 C92 11 114 34 112 66 C110 96 86 118 58 121 C30 124 9 98 12 62 C15 28 38 17 64 14Z"
+    fill="#6366f1"
+    stroke="#e8ecff"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M64 14 C92 11 114 34 112 66 C110 96 86 118 58 121 C30 124 9 98 12 62 C15 28 38 17 64 14Z"
+    fill="none"
+    stroke="#4338ca"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.45"
+  />
+  <path
+    d="M24 54 C21 31 48 19 66 18 C84 17 102 28 104 46"
+    fill="none"
+    stroke="#c7d2fe"
+    stroke-width="2.8"
+    stroke-linecap="round"
+  />
+  <ellipse cx="44" cy="57" rx="5.2" ry="6.3" fill="#111827" transform="rotate(-6 44 57)" />
+  <ellipse cx="72" cy="54" rx="4.8" ry="5.8" fill="#111827" transform="rotate(4 72 54)" />
+  <ellipse cx="46" cy="55" rx="1.4" ry="1.6" fill="#fff" opacity="0.85" />
+  <path
+    d="M36 79 Q54 96 78 77"
+    stroke="#111827"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    fill="none"
+  />
+  <path
+    d="M88 86 C98 84 108 90 112 98 C114 104 108 110 100 112 L94 118 L92 110 C84 108 80 100 82 92 C83 88 85 86 88 86Z"
+    fill="#a5b4fc"
+    stroke="#e0e7ff"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+  <path d="M96 94 L100 98" stroke="#4338ca" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+  <path d="M18 68 C14 74 13 82 16 89" stroke="#818cf8" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+  <path d="M108 62 C114 68 116 76 113 83" stroke="#818cf8" stroke-width="2" stroke-linecap="round" opacity="0.55" />
+</svg>
