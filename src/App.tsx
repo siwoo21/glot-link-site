@@ -45,12 +45,28 @@ export default function App() {
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
       <header className="hero-header" style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
-        <span className="hero-shimmer hero-shimmer--a" aria-hidden="true" />
-        <span className="hero-shimmer hero-shimmer--b" aria-hidden="true" />
+        <svg className="hero-wave" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="heroWaveGradient" gradientUnits="userSpaceOnUse" x1="80" y1="560" x2="820" y2="40">
+              <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
+              <stop offset="38%" stopColor="rgba(56, 189, 248, 0.28)" />
+              <stop offset="52%" stopColor="rgba(167, 139, 250, 0.5)" />
+              <stop offset="66%" stopColor="rgba(99, 102, 241, 0.22)" />
+              <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M -60 540 Q 220 460, 380 400 Q 540 340, 720 180 T 980 40"
+            fill="none"
+            stroke="url(#heroWaveGradient)"
+            strokeWidth="88"
+            strokeLinecap="round"
+          />
+        </svg>
         <div className="hero-header__content">
         <h1 className="hero-logo">
           <span className="hero-logo__word">GLOT</span>
-          <span className="hero-logo__dash" aria-hidden="true">—</span>
+          <span className="hero-logo__dash" aria-hidden="true">-</span>
           <span className="hero-logo__word">Link</span>
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
