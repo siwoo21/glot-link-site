@@ -48,15 +48,10 @@ export default function App() {
         <span className="hero-shimmer hero-shimmer--a" aria-hidden="true" />
         <span className="hero-shimmer hero-shimmer--b" aria-hidden="true" />
         <div className="hero-header__content">
-        <h1 style={{
-          fontSize: 'clamp(3.5rem, 13vw, 6.25rem)',
-          fontWeight: 800,
-          margin: '0 0 20px 0',
-          letterSpacing: '0.05em',
-          lineHeight: 1,
-          color: '#fff',
-        }}>
-          GLOT<span style={{ fontWeight: 300, opacity: 0.85 }}> — </span>Link
+        <h1 className="hero-logo">
+          <span className="hero-logo__word">GLOT</span>
+          <span className="hero-logo__dash" aria-hidden="true">—</span>
+          <span className="hero-logo__word">Link</span>
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
         <p style={{ fontSize: '1rem', color: '#94a3b8', margin: '0 0 30px 0', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto' }}>

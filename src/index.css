@@ -120,71 +120,89 @@ code {
   z-index: 1;
 }
 
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-family: var(--heading);
+  font-size: clamp(3.25rem, 10.5vw, 5.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: normal;
+  color: #fff;
+  text-transform: none;
+}
+
+.hero-logo__word {
+  flex-shrink: 0;
+  white-space: nowrap;
+  letter-spacing: 0.12em;
+}
+
+.hero-logo__dash {
+  flex-shrink: 0;
+  font-weight: 300;
+  font-size: 0.72em;
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0.9;
+  transform: scaleX(1.35);
+}
+
 .hero-shimmer {
   position: absolute;
-  top: -60%;
-  width: 55%;
-  height: 220%;
+  left: -10%;
+  width: 120%;
+  height: 38%;
+  bottom: -45%;
   pointer-events: none;
   opacity: 0;
   background: linear-gradient(
-    90deg,
+    to top,
     transparent 0%,
-    rgba(99, 102, 241, 0.05) 18%,
-    rgba(139, 92, 246, 0.22) 42%,
-    rgba(56, 189, 248, 0.38) 50%,
-    rgba(167, 139, 250, 0.24) 58%,
-    rgba(99, 102, 241, 0.06) 82%,
+    rgba(99, 102, 241, 0.04) 12%,
+    rgba(56, 189, 248, 0.28) 42%,
+    rgba(139, 92, 246, 0.32) 52%,
+    rgba(99, 102, 241, 0.06) 78%,
     transparent 100%
   );
-  filter: blur(1px);
+  filter: blur(2px);
   mix-blend-mode: screen;
 }
 
 .hero-shimmer--a {
-  left: -70%;
-  transform: rotate(22deg);
-  animation: hero-sweep-a 2s ease-in-out infinite;
+  transform: rotate(-10deg);
+  animation: hero-sweep-up 5s ease-in-out infinite;
 }
 
 .hero-shimmer--b {
-  left: -75%;
-  transform: rotate(32deg);
-  animation: hero-sweep-b 2s ease-in-out infinite;
-  animation-delay: 0.35s;
-  opacity: 0;
+  left: -5%;
+  width: 110%;
+  height: 26%;
+  transform: rotate(-4deg);
+  animation: hero-sweep-up 5s ease-in-out infinite;
+  animation-delay: 0.8s;
 }
 
-@keyframes hero-sweep-a {
+@keyframes hero-sweep-up {
   0% {
-    left: -75%;
+    bottom: -50%;
     opacity: 0;
   }
-  12% {
+  8% {
+    opacity: 0.75;
+  }
+  42% {
     opacity: 0.85;
   }
-  55% {
-    opacity: 0.9;
-  }
   100% {
-    left: 130%;
-    opacity: 0;
-  }
-}
-
-@keyframes hero-sweep-b {
-  0% {
-    left: -80%;
-    opacity: 0;
-  }
-  18% {
-    opacity: 0.65;
-  }
-  60% {
-    opacity: 0.7;
-  }
-  100% {
-    left: 125%;
+    bottom: 110%;
     opacity: 0;
   }
 }
