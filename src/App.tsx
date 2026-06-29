@@ -44,7 +44,10 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+      <header className="hero-header" style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+        <span className="hero-shimmer hero-shimmer--a" aria-hidden="true" />
+        <span className="hero-shimmer hero-shimmer--b" aria-hidden="true" />
+        <div className="hero-header__content">
         <h1 style={{
           fontSize: 'clamp(3.5rem, 13vw, 6.25rem)',
           fontWeight: 800,
@@ -70,6 +73,7 @@ export default function App() {
               {tag}
             </span>
           ))}
+        </div>
         </div>
       </header>
 
