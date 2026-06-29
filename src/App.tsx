@@ -44,7 +44,12 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header className="hero-header" style={{ padding: '28px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+      <header className="hero-header" style={{ padding: '52px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+        <nav className="hero-nav" aria-label="페이지 안내">
+          <a href="#features">기능</a>
+          <span className="hero-nav__sep" aria-hidden="true">|</span>
+          <a href="#membership">Membership</a>
+        </nav>
         <div className="hero-wave-wrap" aria-hidden="true">
           <svg className="hero-wave" viewBox="0 0 1000 600" preserveAspectRatio="none">
             <defs>
@@ -65,11 +70,6 @@ export default function App() {
             />
           </svg>
         </div>
-        <nav className="hero-nav" aria-label="페이지 안내">
-          <a href="#features">기능</a>
-          <span className="hero-nav__sep" aria-hidden="true">|</span>
-          <a href="#membership">Membership</a>
-        </nav>
         <div className="hero-header__content">
         <h1 className="hero-brand" aria-label="GLOT-Link">
           <img src="/glot-mascot.svg" alt="" className="hero-mascot" draggable={false} />
