@@ -152,8 +152,8 @@ code {
   letter-spacing: 0;
   line-height: 1;
   opacity: 1;
-  margin: 0 0.06em 0 0.1em;
-  transform: translateY(-0.11em) translateX(0.04em);
+  margin: 0 0.14em 0 0.1em;
+  transform: translateY(-0.11em) translateX(-0.08em);
 }
 
 .hero-wave-wrap {
