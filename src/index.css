@@ -113,6 +113,7 @@ code {
 .hero-header {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero-header__content {
@@ -128,7 +129,7 @@ code {
   gap: 0.08em;
   width: 100%;
   max-width: 100%;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 0 !important;
   padding: 0;
   font-family: var(--heading);
   font-size: clamp(3.25rem, 10.5vw, 5.75rem);
@@ -164,41 +165,48 @@ code {
   z-index: 0;
 }
 
-.hero-wave {
+.hero-wave-wrap::before {
+  content: '';
   position: absolute;
-  width: 160%;
-  height: 160%;
-  left: -30%;
-  top: -30%;
-  pointer-events: none;
-  filter: blur(12px);
+  width: min(420px, 70vw);
+  height: 140px;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.06) 30%,
+    rgba(167, 139, 250, 0.38) 50%,
+    rgba(56, 189, 248, 0.08) 70%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 45% 55%;
+  filter: blur(14px);
   mix-blend-mode: screen;
-  animation: hero-wave-swoosh 5s cubic-bezier(0.35, 0, 0.15, 1) infinite;
+  will-change: transform, opacity;
+  animation: hero-swoosh 5s cubic-bezier(0.45, 0, 0.25, 1) infinite;
 }
 
-@keyframes hero-wave-swoosh {
+@keyframes hero-swoosh {
   0% {
-    transform: translate(-52%, 58%);
+    transform: translate(-55%, 115%) rotate(-18deg) scale(0.85);
     opacity: 0;
   }
-  6% {
+  8% {
+    opacity: 0.95;
+  }
+  45% {
     opacity: 0.85;
   }
-  22% {
-    opacity: 1;
-  }
-  55% {
-    transform: translate(8%, -8%);
-    opacity: 0.75;
-  }
   100% {
-    transform: translate(58%, -62%);
+    transform: translate(95%, -95%) rotate(-18deg) scale(1.05);
     opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-wave-wrap {
+  .hero-wave-wrap::before {
+    animation: none;
     display: none;
   }
 }

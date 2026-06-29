@@ -44,27 +44,8 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header className="hero-header" style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
-        <div className="hero-wave-wrap" aria-hidden="true">
-          <svg className="hero-wave" viewBox="0 0 1000 600" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="heroWaveGradient" gradientUnits="userSpaceOnUse" x1="0" y1="600" x2="1000" y2="0">
-                <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
-                <stop offset="32%" stopColor="rgba(56, 189, 248, 0.22)" />
-                <stop offset="50%" stopColor="rgba(167, 139, 250, 0.55)" />
-                <stop offset="68%" stopColor="rgba(56, 189, 248, 0.25)" />
-                <stop offset="100%" stopColor="rgba(56, 189, 248, 0)" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M -120 620 C 120 520, 280 460, 420 380 S 760 160, 1080 -40"
-              fill="none"
-              stroke="url(#heroWaveGradient)"
-              strokeWidth="72"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
+      <header className="hero-header" style={{ padding: '80px 20px 72px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+        <div className="hero-wave-wrap" aria-hidden="true" />
         <div className="hero-header__content">
         <h1 className="hero-logo">
           <span className="hero-logo__word">GLOT</span>
