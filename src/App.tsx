@@ -44,8 +44,17 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
-        <h1 style={{ fontSize: '3rem', margin: '0 0 10px 0', letterSpacing: '-1px' }}>GLOT-Link</h1>
+      <header style={{ padding: '96px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+        <h1 style={{
+          fontSize: 'clamp(3.5rem, 13vw, 6.25rem)',
+          fontWeight: 800,
+          margin: '0 0 20px 0',
+          letterSpacing: '0.05em',
+          lineHeight: 1,
+          color: '#fff',
+        }}>
+          GLOT<span style={{ fontWeight: 300, opacity: 0.85 }}> — </span>Link
+        </h1>
         <p style={{ fontSize: '1.2rem', color: '#e2e8f0', margin: '0 0 12px 0' }}>초경량 게이밍 챗 헬퍼 — 당신의 게임을 글로벌하게.</p>
         <p style={{ fontSize: '1rem', color: '#94a3b8', margin: '0 0 30px 0', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto' }}>
           게임은 물론, 해외 커뮤니티·스트리밍·업무 채팅까지. Alt+1 한 번으로 실시간 번역하세요.
