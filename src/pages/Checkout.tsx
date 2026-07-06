@@ -18,8 +18,6 @@ import { getSupabase, isSupabaseConfigured } from '../lib/supabase'
 export default function Checkout() {
   const [user, setUser] = useState<User | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
-  const [customerName, setCustomerName] = useState('')
-  const [phone, setPhone] = useState('')
   const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreeRefund, setAgreeRefund] = useState(false)
   const [phase, setPhase] = useState<SubscribePaymentPhase | null>(null)
@@ -31,6 +29,9 @@ export default function Checkout() {
   const supabaseReady = isSupabaseConfigured()
   const amount = getPlanPaymentAmountKrw('pro')
   const payLabel = getBillingMethodLabel()
+  const buyerReady = Boolean(user?.email)
+  const readyToPay = buyerReady && agreeTerms && agreeRefund && portOneReady
+  const showDevWarnings = import.meta.env.DEV
 
   useEffect(() => {
     const supabase = getSupabase()
@@ -52,18 +53,6 @@ export default function Checkout() {
 
     return () => subscription.unsubscribe()
   }, [])
-
-  useEffect(() => {
-    if (!user) return
-    const meta = user.user_metadata as Record<string, unknown> | undefined
-    const fromGoogle =
-      (typeof meta?.full_name === 'string' && meta.full_name) ||
-      (typeof meta?.name === 'string' && meta.name) ||
-      ''
-    if (fromGoogle.trim() && !customerName.trim()) {
-      setCustomerName(fromGoogle.trim())
-    }
-  }, [user, customerName])
 
   const handleGoogleSignIn = async () => {
     setSigningIn(true)
@@ -102,8 +91,6 @@ export default function Checkout() {
 
     const result = await subscribeWithPortOne(user.id, user.email, 'pro', {
       onPhase: setPhase,
-      phoneNumber: phone.trim() || undefined,
-      customerName: customerName.trim() || undefined,
     })
 
     if (result.ok) {
@@ -118,12 +105,26 @@ export default function Checkout() {
 
   const paying = phase !== null
   const payButtonText = (() => {
-    if (phase === 'billing') return `${payLabel} 결제창 여는 중…`
+    if (phase === 'billing') return '카카오페이 결제창 여는 중…'
     if (phase === 'verifying') return 'Pro 활성화 확인 중…'
     if (!user) return 'Google 로그인 후 구매하기'
-    if (isEasyPayBilling()) return `카카오페이로 Pro 구독하기 (₩${amount.toLocaleString()})`
-    return `Pro 구독하기 (₩${amount.toLocaleString()})`
+    if (isEasyPayBilling()) return `카카오페이로 결제하기 (₩${amount.toLocaleString()})`
+    return `${payLabel}로 결제하기 (₩${amount.toLocaleString()})`
   })()
+
+  const stepClass = (step: number) => {
+    const done =
+      (step === 1 || step === 2 || step === 3) ||
+      (step === 4 && buyerReady) ||
+      (step === 5 && success)
+    const active =
+      (step === 4 && !buyerReady) ||
+      (step === 4 && buyerReady && !readyToPay && !paying) ||
+      (step === 5 && (readyToPay || paying) && !success)
+    if (active) return 'checkout-steps__item checkout-steps__item--active'
+    if (done) return 'checkout-steps__item checkout-steps__item--done'
+    return 'checkout-steps__item'
+  }
 
   return (
     <div className="checkout-page">
@@ -138,17 +139,21 @@ export default function Checkout() {
       </header>
 
       <main className="checkout-main">
-        <div className="checkout-steps" aria-label="결제 단계">
-          <span className="checkout-steps__item checkout-steps__item--done">1. 상품 선택</span>
+        <div className="checkout-steps checkout-steps--kakao" aria-label="결제 단계">
+          <span className={stepClass(1)}>1. 상품 선택</span>
           <span className="checkout-steps__sep">›</span>
-          <span className="checkout-steps__item checkout-steps__item--active">2. 구매 정보</span>
+          <span className={stepClass(2)}>2. 구매하기</span>
           <span className="checkout-steps__sep">›</span>
-          <span className="checkout-steps__item">3. 결제</span>
+          <span className={stepClass(3)}>3. 결제 페이지</span>
+          <span className="checkout-steps__sep">›</span>
+          <span className={stepClass(4)}>4. 구매자 정보</span>
+          <span className="checkout-steps__sep">›</span>
+          <span className={stepClass(5)}>5. 간편결제</span>
         </div>
 
         <h1 className="checkout-title">Pro 구독 결제</h1>
         <p className="checkout-subtitle">
-          월 정기구독 · {payLabel} 간편결제 · Windows 앱과 동일 계정(Google)으로 Pro 이용
+          월 ₩{amount.toLocaleString()} 정기구독 · 카카오페이 간편결제 · Google 계정으로 로그인 후 결제
         </p>
 
         <div className="checkout-grid">
@@ -166,110 +171,105 @@ export default function Checkout() {
               <li>실전 게임 은어 사전 자동 보정</li>
               <li>신규 은어 · 기능 우선 업데이트</li>
             </ul>
-          </section>
-
-          <section className="checkout-card">
-            <h2 className="checkout-card__title">구매자 정보</h2>
-
-            {!supabaseReady && (
-              <p className="checkout-note checkout-note--warn">
-                Supabase 환경변수(VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY) 설정이 필요합니다.
-              </p>
-            )}
-
-            {authLoading ? (
-              <p className="checkout-note">로그인 상태 확인 중…</p>
-            ) : user ? (
-              <div className="checkout-auth checkout-auth--signed-in">
-                <p>
-                  <strong>{user.email}</strong> 으로 로그인됨
-                </p>
-                <button type="button" className="checkout-link-btn" onClick={() => void handleSignOut()}>
-                  다른 계정으로 로그인
-                </button>
-              </div>
-            ) : (
-              <div className="checkout-auth">
-                <p className="checkout-note">Pro 결제는 Google 로그인 후 진행됩니다.</p>
-                <button
-                  type="button"
-                  className="checkout-btn checkout-btn--google"
-                  onClick={() => void handleGoogleSignIn()}
-                  disabled={signingIn || !supabaseReady}
-                >
-                  Google 로그인
-                </button>
-              </div>
-            )}
-
-            <label className="checkout-field">
-              <span>구매자 이름</span>
-              <input
-                type="text"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="홍길동"
-                autoComplete="name"
-              />
-            </label>
-
-            <label className="checkout-field">
-              <span>휴대폰 번호 (선택)</span>
-              <input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="010-1234-5678"
-                autoComplete="tel"
-              />
-            </label>
-
-            <div className="checkout-agreements">
-              <label className="checkout-check">
-                <input
-                  type="checkbox"
-                  checked={agreeTerms}
-                  onChange={(e) => setAgreeTerms(e.target.checked)}
-                />
-                <span>이용약관에 동의합니다. (필수)</span>
-              </label>
-              <label className="checkout-check">
-                <input
-                  type="checkbox"
-                  checked={agreeRefund}
-                  onChange={(e) => setAgreeRefund(e.target.checked)}
-                />
-                <span>정기결제 및 환불 규정에 동의합니다. (필수)</span>
-              </label>
-              <p className="checkout-agreements__hint">
-                결제 후 7일 이내·서비스 미이용 시 전액 환불 가능. 이용 시작 후 또는 7일 경과 시 환불 불가.
-              </p>
+            <div className="checkout-seller">
+              <p className="checkout-seller__title">판매자 정보</p>
+              <p>상호: 하루우드 (GLOT-Link) · 대표: 이태호</p>
+              <p>0507-1330-4441 · wqe5000@naver.com</p>
             </div>
-
-            {!portOneReady && (
-              <p className="checkout-note checkout-note--warn">
-                PortOne 키(VITE_PORTONE_STORE_ID, VITE_PORTONE_BILLING_CHANNEL_KEY) 설정 후 결제창이
-                열립니다.
-              </p>
-            )}
-
-            {error && <p className="checkout-alert checkout-alert--error">{error}</p>}
-            {success && <p className="checkout-alert checkout-alert--success">{success}</p>}
-
-            <button
-              type="button"
-              className="checkout-btn checkout-btn--pay"
-              onClick={() => void handlePay()}
-              disabled={paying || signingIn || Boolean(success)}
-            >
-              {payButtonText}
-            </button>
-
-            <p className="checkout-footer-note">
-              결제 수단: {payLabel} · 판매자: 하루우드(GLOT-Link) · 문의: wqe5000@naver.com ·
-              0507-1330-4441
-            </p>
           </section>
+
+          <div className="checkout-stack">
+            <section className="checkout-card">
+              <h2 className="checkout-card__title">4. 구매자 정보</h2>
+
+              {showDevWarnings && !supabaseReady && (
+                <p className="checkout-note checkout-note--warn">
+                  Supabase 환경변수(VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY) 설정이 필요합니다.
+                </p>
+              )}
+
+              {authLoading ? (
+                <p className="checkout-note">로그인 상태 확인 중…</p>
+              ) : user ? (
+                <div className="checkout-auth checkout-auth--signed-in">
+                  <p>
+                    구매자 이메일: <strong>{user.email}</strong>
+                  </p>
+                  <button type="button" className="checkout-link-btn" onClick={() => void handleSignOut()}>
+                    다른 Google 계정으로 로그인
+                  </button>
+                </div>
+              ) : (
+                <div className="checkout-auth">
+                  <p className="checkout-note">
+                    회원(Google) 로그인 후 결제합니다. 심사·테스트용 Google 계정으로 로그인해 주세요.
+                  </p>
+                  <button
+                    type="button"
+                    className="checkout-btn checkout-btn--google"
+                    onClick={() => void handleGoogleSignIn()}
+                    disabled={signingIn || !supabaseReady}
+                  >
+                    Google 로그인
+                  </button>
+                </div>
+              )}
+
+              <div className="checkout-agreements">
+                <label className="checkout-check">
+                  <input
+                    type="checkbox"
+                    checked={agreeTerms}
+                    onChange={(e) => setAgreeTerms(e.target.checked)}
+                  />
+                  <span>이용약관에 동의합니다. (필수)</span>
+                </label>
+                <label className="checkout-check">
+                  <input
+                    type="checkbox"
+                    checked={agreeRefund}
+                    onChange={(e) => setAgreeRefund(e.target.checked)}
+                  />
+                  <span>정기결제 및 환불 규정에 동의합니다. (필수)</span>
+                </label>
+                <p className="checkout-agreements__hint">
+                  결제 후 7일 이내·서비스 미이용 시 전액 환불. 이용 시작 후 또는 7일 경과 시 환불 불가.
+                  해지 시 다음 결제부터 중단, Pro는 현재 기간 종료까지 이용 가능.
+                </p>
+              </div>
+            </section>
+
+            <section className="checkout-card">
+              <h2 className="checkout-card__title">5. 결제 수단 선택</h2>
+              <label className="checkout-pay-method">
+                <input type="radio" name="pay-method" checked readOnly />
+                <span className="checkout-pay-method__badge">카카오페이</span>
+                <span className="checkout-pay-method__desc">간편결제 정기구독 (월 ₩{amount.toLocaleString()})</span>
+              </label>
+              <p className="checkout-note">
+                아래 버튼을 누르면 카카오페이 결제창(PortOne)이 열립니다.
+              </p>
+
+              {showDevWarnings && !portOneReady && (
+                <p className="checkout-note checkout-note--warn">
+                  PortOne 키(VITE_PORTONE_STORE_ID, VITE_PORTONE_BILLING_CHANNEL_KEY) 설정 후 결제창이
+                  열립니다.
+                </p>
+              )}
+
+              {error && <p className="checkout-alert checkout-alert--error">{error}</p>}
+              {success && <p className="checkout-alert checkout-alert--success">{success}</p>}
+
+              <button
+                type="button"
+                className="checkout-btn checkout-btn--pay checkout-btn--kakao"
+                onClick={() => void handlePay()}
+                disabled={paying || signingIn || Boolean(success) || !readyToPay}
+              >
+                {payButtonText}
+              </button>
+            </section>
+          </div>
         </div>
       </main>
     </div>
