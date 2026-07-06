@@ -1,6 +1,7 @@
 // src/App.tsx
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   // 어떤 약관 팝업을 띄울지 제어하는 상태 (null, 'terms', 'privacy', 'refund')
@@ -161,8 +162,26 @@ export default function App() {
             <ul style={{ paddingLeft: '20px', margin: 0, flex: 1, fontSize: '0.95rem', color: '#1e1b4b', lineHeight: '1.75', wordBreak: 'keep-all' }}>
               <li style={{ marginBottom: '8px' }}><strong>무제한 번역</strong> · 단축키 변경 가능</li>
               <li style={{ marginBottom: '8px' }}><strong>실전 게임 은어 사전</strong> 자동 보정</li>
-              <li style={{ marginBottom: 0 }}>신규 은어 · 기능 우선 업데이트</li>
+              <li style={{ marginBottom: '8px' }}>신규 은어 · 기능 우선 업데이트</li>
             </ul>
+            <Link
+              to="/checkout"
+              style={{
+                display: 'block',
+                marginTop: '22px',
+                padding: '14px 20px',
+                borderRadius: '8px',
+                background: '#4338ca',
+                color: '#fff',
+                textAlign: 'center',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                fontSize: '1rem',
+                transition: 'background 0.2s',
+              }}
+            >
+              Pro 구매하기
+            </Link>
           </div>
 
         </div>
