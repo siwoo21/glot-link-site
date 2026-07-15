@@ -2,6 +2,42 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import {
+  APP_VERSION_LABEL,
+  CHECKOUT_ENABLED,
+  COMING_SOON_CHECKOUT,
+  COMING_SOON_DETAIL,
+  COMING_SOON_DOWNLOAD,
+  DOWNLOAD_ENABLED,
+} from './lib/siteConfig';
+
+const disabledCtaStyle: React.CSSProperties = {
+  background: '#475569',
+  color: '#e2e8f0',
+  padding: '15px 35px',
+  borderRadius: '8px',
+  border: 'none',
+  fontWeight: 'bold',
+  fontSize: '1.1rem',
+  display: 'inline-block',
+  cursor: 'not-allowed',
+  opacity: 0.92,
+};
+
+const disabledProStyle: React.CSSProperties = {
+  display: 'block',
+  marginTop: '22px',
+  padding: '14px 20px',
+  borderRadius: '8px',
+  background: '#94a3b8',
+  color: '#f8fafc',
+  textAlign: 'center',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  cursor: 'not-allowed',
+  border: 'none',
+  width: '100%',
+};
 
 export default function App() {
   // 어떤 약관 팝업을 띄울지 제어하는 상태 (null, 'terms', 'privacy', 'refund')
@@ -46,7 +82,7 @@ export default function App() {
 
       {/* 1. 상단 헤더 및 서비스 소개 */}
       <header className="hero-header" style={{ padding: '52px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
-        <a href="#" className="hero-corner-logo" aria-label="GLOT-Link 홈">
+        <a href="/" className="hero-corner-logo" aria-label="GLOT-Link 홈">
           <img src="/glot-mascot.svg" alt="" draggable={false} />
         </a>
         <nav className="hero-nav" aria-label="페이지 안내">
@@ -83,9 +119,23 @@ export default function App() {
           게임은 물론, 해외 커뮤니티·스트리밍·업무 채팅까지. Alt+1 한 번으로 실시간 번역하세요.
         </p>
         <div>
-          <a href="#" style={{ background: '#6366f1', color: '#fff', padding: '15px 35px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', display: 'inline-block', transition: 'background 0.2s' }}>
-            Windows용 다운로드 (v1.0.0)
-          </a>
+          {DOWNLOAD_ENABLED ? (
+            <a
+              href="#"
+              style={{ background: '#6366f1', color: '#fff', padding: '15px 35px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem', display: 'inline-block', transition: 'background 0.2s' }}
+            >
+              Windows용 다운로드 ({APP_VERSION_LABEL})
+            </a>
+          ) : (
+            <>
+              <button type="button" disabled style={disabledCtaStyle} aria-disabled="true">
+                {COMING_SOON_DOWNLOAD}
+              </button>
+              <p style={{ margin: '14px 0 0 0', fontSize: '0.9rem', color: '#94a3b8', maxWidth: '420px', marginLeft: 'auto', marginRight: 'auto' }}>
+                {COMING_SOON_DETAIL}
+              </p>
+            </>
+          )}
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '36px' }}>
           {['Alt+1 단축키 번역', '게임·채팅 오버레이', '가볍게 실행'].map((tag) => (
@@ -164,24 +214,30 @@ export default function App() {
               <li style={{ marginBottom: '8px' }}><strong>실전 게임 은어 사전</strong> 자동 보정</li>
               <li style={{ marginBottom: '8px' }}>신규 은어 · 기능 우선 업데이트</li>
             </ul>
-            <Link
-              to="/checkout"
-              style={{
-                display: 'block',
-                marginTop: '22px',
-                padding: '14px 20px',
-                borderRadius: '8px',
-                background: '#4338ca',
-                color: '#fff',
-                textAlign: 'center',
-                textDecoration: 'none',
-                fontWeight: 'bold',
-                fontSize: '1rem',
-                transition: 'background 0.2s',
-              }}
-            >
-              Pro 구매하기
-            </Link>
+            {CHECKOUT_ENABLED ? (
+              <Link
+                to="/checkout"
+                style={{
+                  display: 'block',
+                  marginTop: '22px',
+                  padding: '14px 20px',
+                  borderRadius: '8px',
+                  background: '#4338ca',
+                  color: '#fff',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  transition: 'background 0.2s',
+                }}
+              >
+                Pro 구매하기
+              </Link>
+            ) : (
+              <button type="button" disabled style={disabledProStyle} aria-disabled="true" title={COMING_SOON_DETAIL}>
+                {COMING_SOON_CHECKOUT}
+              </button>
+            )}
           </div>
 
         </div>

@@ -18,9 +18,10 @@ if not exist ".git" (
     goto ERROR
 )
 
-:: 1. 변경된 파일 담기
+:: 1. 변경된 파일 담기 (비밀/env·빌드 산출물은 제외)
 echo 1. 변경된 파일들을 임시 보관함에 담는 중...
-git add .
+git add -A
+git reset HEAD -- .env.local .env .vercel dist node_modules 2>nul
 if %errorlevel% neq 0 goto ERROR
 
 :: 2. 저장 기록 남기기 (현재 날짜/시간 자동 기록)

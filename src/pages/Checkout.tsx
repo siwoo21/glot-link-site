@@ -14,6 +14,7 @@ import {
   PORTONE_SUBSCRIPTION_ORDER_NAME,
 } from '../lib/payment'
 import { getSupabase, isSupabaseConfigured } from '../lib/supabase'
+import { CHECKOUT_ENABLED, COMING_SOON_CHECKOUT, COMING_SOON_DETAIL } from '../lib/siteConfig'
 
 export default function Checkout() {
   const [user, setUser] = useState<User | null>(null)
@@ -124,6 +125,42 @@ export default function Checkout() {
     if (active) return 'checkout-steps__item checkout-steps__item--active'
     if (done) return 'checkout-steps__item checkout-steps__item--done'
     return 'checkout-steps__item'
+  }
+
+  if (!CHECKOUT_ENABLED) {
+    return (
+      <div className="checkout-page">
+        <header className="checkout-header">
+          <Link to="/" className="checkout-header__brand">
+            <img src="/glot-mascot.svg" alt="" className="checkout-header__logo" draggable={false} />
+            <span>GLOT-Link</span>
+          </Link>
+          <Link to="/" className="checkout-header__back">
+            ← 홈으로
+          </Link>
+        </header>
+        <main className="checkout-main">
+          <div className="checkout-card" style={{ textAlign: 'center', maxWidth: '480px', margin: '0 auto' }}>
+            <h1 className="checkout-title">{COMING_SOON_CHECKOUT}</h1>
+            <p style={{ color: '#64748b', lineHeight: 1.7, margin: '0 0 20px 0' }}>{COMING_SOON_DETAIL}</p>
+            <Link
+              to="/"
+              style={{
+                display: 'inline-block',
+                padding: '12px 24px',
+                borderRadius: '8px',
+                background: '#4338ca',
+                color: '#fff',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+              }}
+            >
+              홈으로 돌아가기
+            </Link>
+          </div>
+        </main>
+      </div>
+    )
   }
 
   return (
