@@ -81,7 +81,7 @@ export default function App() {
     <div style={{ fontFamily: 'sans-serif', lineHeight: '1.6', color: '#111', backgroundColor: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
       {/* 1. 상단 헤더 및 서비스 소개 */}
-      <header className="hero-header" style={{ padding: '52px 20px 88px', textAlign: 'center', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
+      <header className="hero-header" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)', color: '#fff' }}>
         <a href="/" className="hero-corner-logo" aria-label="GLOT-Link 홈">
           <img src="/glot-mascot.svg" alt="" draggable={false} />
         </a>

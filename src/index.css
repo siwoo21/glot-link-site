@@ -167,6 +167,41 @@ code {
 .hero-header {
   position: relative;
   overflow: hidden;
+  padding: 52px 20px 88px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .hero-header {
+    padding: 58px 14px 56px;
+  }
+
+  .hero-corner-logo {
+    top: 10px;
+    left: 12px;
+  }
+
+  .hero-corner-logo img {
+    width: 52px;
+  }
+
+  /* 데스크톱: 가운데 네비 유지 / 모바일: 우측 상단으로 분리 */
+  .hero-nav {
+    top: 12px;
+    left: auto;
+    right: 12px;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+    filter: none;
+    max-width: calc(100% - 76px);
+  }
+
+  .hero-header__content {
+    padding-top: 8px;
+  }
 }
 
 .hero-header__content {
